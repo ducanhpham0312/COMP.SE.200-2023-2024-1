@@ -24,4 +24,4 @@ const isDate = nodeIsDate
   ? (value) => nodeIsDate(value)
   : (value) => isObjectLike(value) && getTag(value) == '[object Date]'
 
-export default isDate
+module.exports = isDate;
