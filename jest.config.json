@@ -1,0 +1,9 @@
+{
+  "setupFilesAfterEnv": ["./testSetup.js"],
+  "coveragePathIgnorePatterns" : [
+    "src/.internal/"
+  ],
+  "testPathIgnorePatterns" : [
+    "src/.internal/"
+  ]
+}
