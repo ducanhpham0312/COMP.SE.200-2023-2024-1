@@ -25,6 +25,12 @@ describe('reduce', function(){
     const expected =  { "[object Object]": [0] };
     expect(arr).toEqual(expected);
   });
-
-
+  it('should work with no initial accumulator', function(){
+    const arr = reduce([1, 2, 3], (sum, n) => sum + n)
+    expect(arr).toEqual(6)
+  })
+  it('should work with initial accumulator different than 0', function(){
+    const arr = reduce([1, 2, 3], (sum, n) => sum + n, 4)
+    expect(arr).toEqual(10)
+  })
 });
