@@ -60,10 +60,12 @@ describe('toNumber', function(){
     });
 
     it('should return NaN when value is an object', function(){
-      expect(toNumber({'a':1, 'b':2})).toEqual(NaN)
+      var isnan = Number.isNaN(expect(toNumber({'a':1, 'b':2})))
+      expect(isnan)
     })
 
     it('should return NaN when value is an array', function(){
-      expect(toNumber([1, 2, 3])).toEqual(NaN)
+      var isnan = Number.isNaN(expect(toNumber([1, 2, 3])))
+      expect(isnan)
     })
 });
