@@ -11,6 +11,10 @@ describe('toNumber', function(){
     expect(toNumber("1.0001")).toEqual(1.0001)
   });
 
+  it('numbered char return correctly', function(){
+    expect(toNumber('1')).toEqual(1)
+  });
+
   it('should return zero on zero', function(){
     expect(toNumber(0)).toEqual(0)
   });
@@ -66,6 +70,21 @@ describe('toNumber', function(){
 
   it('should return NaN when value is an array', function(){
     var isnan = Number.isNaN(expect(toNumber([1, 2, 3])))
+    expect(isnan)
+  })
+
+  it('should return NaN when value is an empty array', function(){
+    var isnan = Number.isNaN(expect(toNumber([])))
+    expect(isnan)
+  })
+
+  it('should return NaN when value is null', function(){
+    var isnan = Number.isNaN(expect(toNumber(null)))
+    expect(isnan)
+  })
+
+  it('should return NaN when value is undefined', function(){
+    var isnan = Number.isNaN(expect(toNumber(undefined)))
     expect(isnan)
   })
 });
