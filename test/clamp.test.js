@@ -2,11 +2,11 @@ import clamp from "../src/clamp.js";
 
 describe('clamp', function() {    
     it('should not change a number which is on the lower bound', function() {
-	expect(clamp(-5, -5, 5)).toBe(-5);
+        expect(clamp(-5, -5, 5)).toBe(-5);
     });
     
     it('should return the lower bound for a smaller number', function() {
-	expect(clamp(-10, -5, 5)).toBe(-5);
+        expect(clamp(-10, -5, 5)).toBe(-5);
     });
 
     /** Failed tests
