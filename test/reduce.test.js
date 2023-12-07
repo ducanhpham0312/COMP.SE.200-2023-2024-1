@@ -58,4 +58,11 @@ describe('reduce', function(){
     const arr = reduce([1, 2, 3], (sum, n) => sum + n, "a string")
     expect(arr).toEqual("a string123")
   })
+
+  it('should work with typed array', function(){
+    const typedArr = new Uint8Array(3)
+    typedArr[0] = 20
+    const arr = reduce(typedArr, (sum, n) => sum + n, 1)
+    expect(arr).toEqual(21)
+  })
 });
