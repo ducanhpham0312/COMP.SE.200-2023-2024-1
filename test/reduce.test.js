@@ -33,4 +33,29 @@ describe('reduce', function(){
     const arr = reduce([1, 2, 3], (sum, n) => sum + n, 4)
     expect(arr).toEqual(10)
   })
+
+  it('should work with empty array', function(){
+    const arr = reduce([], (sum, n) => sum + n, 1)
+    expect(arr).toEqual(1)
+  })
+
+  it('return empty object when collection is not array or object', function(){
+    const arr = reduce(15, (result, value, key) => {
+      (result[value] || (result[value] = [])).push(key)
+      return result
+    }, {})
+    expect(arr).toEqual({})
+  })
+
+  it('treats array like object with index value as key when using iteratee compatible with object', function(){
+    const arr = reduce([1, 2, 3], (result, value, key) => {
+      (result[value] || (result[value] = [])).push(key)
+      return result
+    }, {})
+    expect(arr).toEqual({"1": [0], "2": [1], "3": [2]})
+  })
+  it('should work with accumulator of different type', function(){
+    const arr = reduce([1, 2, 3], (sum, n) => sum + n, "a string")
+    expect(arr).toEqual("a string123")
+  })
 });
