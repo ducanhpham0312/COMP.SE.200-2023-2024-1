@@ -1,3 +1,4 @@
+import isPrototype from "../src/.internal/isPrototype";
 import isEmpty from "../src/isEmpty";
 
 describe('isEmpty', function(){
@@ -92,17 +93,17 @@ describe('isEmpty', function(){
 
   it('empty prototype is empty', function(){
       const testObject = new Object()
-      expect(isEmpty(Object.getPrototypeOf(testObject))).toBe(true);
+      expect(isEmpty(Object.getPrototypeOf(Object.create(testObject)))).toBe(true);
   });
 
   it('filled prototype is not empty', function(){
       const test = {
-          a: '1',
-          testFunk: function() {
-            console.log("test");
-          }
-        };
-      expect(isEmpty(test)).toBe(false);
+        city: "Madrid",
+        greet() {
+          console.log(`Greetings from ${this.city}`);
+        },
+      };
+      expect(isEmpty(Object.getPrototypeOf(Object.create(test)))).toBe(false);
   });
 
   it('null is empty', function(){
