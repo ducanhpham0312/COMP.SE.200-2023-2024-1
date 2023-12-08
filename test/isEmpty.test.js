@@ -93,7 +93,7 @@ describe('isEmpty', function(){
 
   it('empty prototype is empty', function(){
       const testObject = new Object()
-      expect(isEmpty(Object.getPrototypeOf(Object.create(testObject)))).toBe(true);
+      expect(isEmpty(Object.getPrototypeOf(testObject))).toBe(true);
   });
 
   it('filled prototype is not empty', function(){
@@ -103,7 +103,7 @@ describe('isEmpty', function(){
           console.log(`Greetings from ${this.city}`);
         },
       };
-      expect(isEmpty(Object.getPrototypeOf(Object.create(test)))).toBe(false);
+      expect(isEmpty(test)).toBe(false);
   });
 
   it('null is empty', function(){
