@@ -54,6 +54,10 @@ describe('toNumber', function(){
     expect(toNumber("0x55")).toEqual(85)
   });
 
+  it('should return NaN from bad hex string', function(){
+    expect(toNumber("-0xabc123")).toEqual(NaN)
+  });
+
   it('should return NaN from bad hexadecimal strings', function(){
     var isnan = Number.isNaN(expect(toNumber("0x55g")))
     expect(isnan)
@@ -68,6 +72,24 @@ describe('toNumber', function(){
     expect(isnan)
   })
 
+  it('should return NaN when value includes a function', function(){
+    const customObject = {
+      value: 42,
+      valueOf: function () {
+        return this.value;
+      }
+    };
+    var isnan = Number.isNaN(expect(toNumber(customObject)))
+    expect(isnan)
+  })
+  it('should return NaN when value is a object with valueOf but not a function', function(){
+    const customObject = {
+      value: 42,
+      valueOf: "This is not a function"
+    };
+    var isnan = Number.isNaN(expect(toNumber(customObject)))
+    expect(isnan)
+  })
   it('should return NaN when value is an array', function(){
     var isnan = Number.isNaN(expect(toNumber([1, 2, 3])))
     expect(isnan)

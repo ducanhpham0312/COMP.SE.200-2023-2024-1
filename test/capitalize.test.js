@@ -40,4 +40,12 @@ describe('capitalize', function() {
     it('should use the usual notation for objects', function() {
         expect(capitalize({"a": 1, "b": 2, 3: null})).toBe("[object object]");
     });
+
+    it('should preserve -0', function() {
+        expect(capitalize(-0)).toBe("-0");
+    });
+
+    it('should parse string with unicode included correctly', function() {
+        expect(capitalize("a\uD834\uDD1Ez")).toBe("A𝄞z");
+    });
 });
