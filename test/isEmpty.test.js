@@ -1,4 +1,3 @@
-import isPrototype from "../src/.internal/isPrototype";
 import isEmpty from "../src/isEmpty";
 
 describe('isEmpty', function(){
