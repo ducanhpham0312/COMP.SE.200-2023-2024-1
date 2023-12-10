@@ -9,6 +9,18 @@ describe('clamp', function() {
         expect(clamp(-10, -5, 5)).toBe(-5);
     });
 
+    it('should return NaN when the value to clamp is NaN', function() {
+        expect(clamp(NaN, -5, 5)).toBe(NaN);
+    });
+
+    it('should return 0 when all bounds are NaN', function() {
+        expect(clamp(-5, NaN, NaN)).toBe(0);
+    });
+
+    it('should return 0 when value < 0 and lower bound is NaN', function() {
+        expect(clamp(-5, NaN, 5)).toBe(0);
+    });
+
     /** Failed tests
      *
      */
@@ -50,5 +62,10 @@ describe('clamp', function() {
     // Returns the lower bound (-5) instead of undefined
     // it('should return undefined when the upper bound is undefined', function() {
     //	expect(clamp(4, -5, undefined)).toBe(undefined);
+    // });
+
+    // Returns the lower bound (-5) instead of 0 which replaces the upper bound (NaN)
+    // it('should return 0 when value > 0 and upper bound is NaN', function() {
+    //	expect(clamp(5, -5, NaN)).toBe(0);
     // });
 });
